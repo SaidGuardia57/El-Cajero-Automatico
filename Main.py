@@ -41,3 +41,29 @@ def main():
         except:
             print("Opción inválida")
             continue
+
+
+if opcion == 1:
+            print(f"Tu saldo es: ${saldo}\n")
+
+        elif opcion == 2:
+            saldo = depositar(saldo, historial)
+
+        elif opcion == 3:
+            saldo = retirar(saldo, historial)
+
+        elif opcion == 4:
+            ver_historial(historial)
+
+        elif opcion == 5:
+            print("Gracias por usar el cajero 👋")
+
+        else:
+            print("Opción inválida")
+
+    # Guardar cambios
+    usuarios[usuario_actual]["saldo"] = saldo
+
+
+if _name_ == "_main_":
+    main()
