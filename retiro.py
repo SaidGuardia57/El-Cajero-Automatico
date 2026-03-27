@@ -7,6 +7,7 @@ def retirar(saldo, historial):
         print("Monto inválido\n")
         return saldo
 
+
     if monto > saldo:
         print("Fondos insuficientes\n")
     elif monto <= 0:
