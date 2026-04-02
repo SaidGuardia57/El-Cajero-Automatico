@@ -1,9 +1,14 @@
 #main.py
 
+import os
 from login import iniciar_sesion
 from deposito import depositar
 from retiro import retirar
 from historial import ver_historial
+
+
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def main():
@@ -29,6 +34,7 @@ def main():
     opcion = 0
 
     while opcion != 5:
+        limpiar_pantalla()
         print("\n--- MENÚ ---")
         print("1. Consultar saldo")
         print("2. Depositar dinero")
@@ -40,30 +46,42 @@ def main():
             opcion = int(input("Selecciona una opción: "))
         except:
             print("Opción inválida")
+            input("\nPresiona Enter para volver al menú...")
             continue
 
+        limpiar_pantalla()
 
-if opcion == 1:
+        if opcion == 1:
+            print("--- CONSULTAR SALDO ---\n")
             print(f"Tu saldo es: ${saldo}\n")
+            input("Presiona Enter para volver al menú...")
 
         elif opcion == 2:
+            print("--- DEPOSITAR DINERO ---\n")
             saldo = depositar(saldo, historial)
+            input("\nPresiona Enter para volver al menú...")
 
         elif opcion == 3:
+            print("--- RETIRAR DINERO ---\n")
             saldo = retirar(saldo, historial)
+            input("\nPresiona Enter para volver al menú...")
 
         elif opcion == 4:
+            print("--- HISTORIAL ---\n")
             ver_historial(historial)
+            input("\nPresiona Enter para volver al menú...")
 
         elif opcion == 5:
+            limpiar_pantalla()
             print("Gracias por usar el cajero 👋")
 
         else:
             print("Opción inválida")
+            input("\nPresiona Enter para volver al menú...")
 
     # Guardar cambios
     usuarios[usuario_actual]["saldo"] = saldo
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
